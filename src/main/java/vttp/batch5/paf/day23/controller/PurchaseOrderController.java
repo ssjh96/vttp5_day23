@@ -3,7 +3,11 @@ package vttp.batch5.paf.day23.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import vttp.batch5.paf.day23.model.PurchaseOrder;
 import vttp.batch5.paf.day23.service.PurchaseOrderService;
+import vttp.batch5.paf.day23.util.Serialise;
+
+import java.text.ParseException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -27,10 +31,13 @@ public class PurchaseOrderController {
     private PurchaseOrderService poSvc;
 
     @PutMapping(path = "/purchaseorder", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> putPO(@RequestBody String payload) 
+    public ResponseEntity<String> putPO(@RequestBody String payload) throws Throwable 
     {
-        
-        return new String();
+        PurchaseOrder po = Serialise.toPurchaseOrder(payload);
+
+        poSvc.createPurchaseOrder(po);
+
+        return ResponseEntity.ok().body("{}");
     }
     
     

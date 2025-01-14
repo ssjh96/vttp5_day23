@@ -21,13 +21,14 @@ public class PurchaseOrderService {
     public void createPurchaseOrder(PurchaseOrder po)
     {
         // Generate random UUID
-        String poId = UUID.randomUUID().toString().replace("-", "").substring(0,  8);
+        // String poId = UUID.randomUUID().toString().replace("-", "").substring(0,  8);
 
+        // Seq mattes, PO must be created first before line_items
         // Save PO w poId to DB
-        purchaseOrderRepo.createPo(poId, po);
+        purchaseOrderRepo.createPo(po.getPoId(), po);
 
         // Save line items w poId to DB
-        lineItemRepo.createLineItemsForPoId(po.getLineItems(), poId);
+        lineItemRepo.createLineItemsForPoId(po.getLineItems(), po.getPoId());
     }
 
 }

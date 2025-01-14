@@ -2,6 +2,7 @@ package vttp.batch5.paf.day23.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class PurchaseOrder {
     
@@ -18,13 +19,16 @@ public class PurchaseOrder {
 
     // CONSTRUCTOR
     public PurchaseOrder() {
+        this.poId = UUID.randomUUID().toString().replace("-", "").substring(0,  8);
     }
 
     public PurchaseOrder(String poId, String name, String address, Date deliveryDate, List<LineItem> lineItems) {
-        this.poId = poId;
+        // this.poId = poId;
+        this.poId = UUID.randomUUID().toString().replace("-", "").substring(0,  8);
         this.name = name;
         this.address = address;
         this.deliveryDate = deliveryDate;
+
         this.lineItems = lineItems;
     }
 

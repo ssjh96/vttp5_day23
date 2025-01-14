@@ -6,7 +6,7 @@ public class LineItem
     private Integer id; // Pri key to line_item table 
     private String name;
     private Integer quantiy;
-    private float unitPrice;
+    private double unitPrice;
     private String poId; // Foreign key to purchase_order table
     
     // CONSTRUCTOR
@@ -46,11 +46,11 @@ public class LineItem
         this.quantiy = quantiy;
     }
 
-    public float getUnitPrice() {
+    public double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(float unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
